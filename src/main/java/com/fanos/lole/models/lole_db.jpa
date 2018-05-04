@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" ptype="MONOLITH" ppkg="com.fanos.lole" epkg="domain" v="4.8.3" rws="_1525255401671232" cws="_1525255401671232" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_1525255401559134" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity compositePrimaryKeyClass="LoleOrderPK" abs="false" class="LoleOrder" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559135">
+        <jpa:attributes>
+            <jpa:basic optional="true" attribute-type="String" v="true" name="orderNumber" id="_1525255401563146">
+                <jpa:column name="order_number" unique="false" nullable="true" insertable="true" updatable="true" table="lole_orders" length="10"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="orderDate" id="_1525255401563147">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="order_date" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.math.BigDecimal" v="true" name="totalAmount" id="_1525255401563148">
+                <jpa:column name="total_amount" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders" precision="12" scale="2"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="dueDate" id="_1525255401563149">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="due_date" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="String" v="true" name="specialNote" id="_1525255401563150">
+                <jpa:column name="special_note" unique="false" nullable="true" insertable="true" updatable="true" table="lole_orders" length="100"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="double" v="true" name="pickUpLat" id="_1525255401563151">
+                <jpa:column name="pick_up_lat" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="double" v="true" name="pickUpLng" id="_1525255401563152">
+                <jpa:column name="pick_up_lng" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="double" v="true" name="deliveryLat" id="_1525255401563153">
+                <jpa:column name="delivery_lat" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="double" v="true" name="deliveryLng" id="_1525255401563154">
+                <jpa:column name="delivery_lng" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401563155">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401563156">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="lole_orders"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559140" connected-attribute-id="_1525255401571192" v="true" name="customerId" id="_1525255401563157">
+                <jpa:join-column name="CUSTOMER_ID" rc="CUSTOMER_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559136" connected-attribute-id="_1525255401567166" v="true" name="orderLaundryCollection" id="_1525255401567158"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559138" connected-attribute-id="_1525255401571179" v="true" name="orderItemCollection" id="_1525255401567159"/>
+            <jpa:id attribute-type="Integer" v="true" name="orderId" id="_1525255401559145">
+                <jpa:column name="order_id" unique="false" nullable="false" insertable="true" updatable="true" table="lole_orders"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="lole_orders">
+            <jpa:unique-constraint>
+                <jpa:column-name>order_number</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyType="D" compositePrimaryKeyClass="OrderLaundryPK" abs="false" class="OrderLaundry" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559136">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="java.math.BigDecimal" v="true" name="unitPrice" id="_1525255401567162">
+                <jpa:column name="unit_price" unique="false" nullable="false" insertable="true" updatable="true" table="order_laundry" precision="12" scale="2"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="int" v="true" name="quantity" id="_1525255401567163">
+                <jpa:column name="quantity" unique="false" nullable="false" insertable="true" updatable="true" table="order_laundry"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401567164">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="order_laundry"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401567165">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="order_laundry"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559135" connected-attribute-id="_1525255401567158" v="true" name="loleOrder" id="_1525255401567166">
+                <jpa:join-column name="ORDER_ID" rc="ORDER_ID" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559142" connected-attribute-id="_1525255401571212" v="true" name="laundry" id="_1525255401567167">
+                <jpa:join-column name="LAUNDRY_ID" rc="LAUNDRY_ID" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="int" v="true" name="orderId" id="_1525255401567160">
+                <jpa:column name="order_id" unique="false" nullable="false" insertable="true" updatable="true" table="order_laundry"/>
+            </jpa:id>
+            <jpa:id attribute-type="int" v="true" name="laundryId" id="_1525255401567161">
+                <jpa:column name="laundry_id" unique="false" nullable="false" insertable="true" updatable="true" table="order_laundry"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="order_laundry"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductTypePK" abs="false" class="ProductType" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559137">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="productTypeName" id="_1525255401567169">
+                <jpa:column name="product_type_name" unique="false" nullable="false" insertable="true" updatable="true" table="product_types" length="45"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401567170">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="product_types"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401567171">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="product_types"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559144" connected-attribute-id="_1525255401571230" v="true" name="productsCollection" id="_1525255401571172"/>
+            <jpa:id attribute-type="Integer" v="true" name="productTypeId" id="_1525255401567168">
+                <jpa:column name="product_type_id" unique="false" nullable="false" insertable="true" updatable="true" table="product_types"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="product_types"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyType="D" compositePrimaryKeyClass="OrderItemPK" abs="false" class="OrderItem" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559138">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="java.math.BigDecimal" v="true" name="unitPrice" id="_1525255401571175">
+                <jpa:column name="unit_price" unique="false" nullable="false" insertable="true" updatable="true" table="order_item" precision="12" scale="2"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="int" v="true" name="quantity" id="_1525255401571176">
+                <jpa:column name="quantity" unique="false" nullable="false" insertable="true" updatable="true" table="order_item"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401571177">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="order_item"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401571178">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="order_item"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559135" connected-attribute-id="_1525255401567159" v="true" name="loleOrder" id="_1525255401571179">
+                <jpa:join-column name="ORDER_ID" rc="ORDER_ID" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559144" connected-attribute-id="_1525255401571228" v="true" name="product" id="_1525255401571180">
+                <jpa:join-column name="PRODUCT_ID" rc="PRODUCT_ID" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="int" v="true" name="orderId" id="_1525255401571173">
+                <jpa:column name="order_id" unique="false" nullable="false" insertable="true" updatable="true" table="order_item"/>
+            </jpa:id>
+            <jpa:id attribute-type="int" v="true" name="productId" id="_1525255401571174">
+                <jpa:column name="product_id" unique="false" nullable="false" insertable="true" updatable="true" table="order_item"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="order_item"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="WorkingHourPK" abs="false" class="WorkingHour" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559139">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="nameOfDay" id="_1525255401571182">
+                <jpa:column name="name_of_day" unique="false" nullable="false" insertable="true" updatable="true" table="working_hours" length="10"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="fromHour" id="_1525255401571183">
+                <jpa:temporal>TIME</jpa:temporal>
+                <jpa:column name="from_hour" unique="false" nullable="false" insertable="true" updatable="true" table="working_hours"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="toHour" id="_1525255401571184">
+                <jpa:temporal>TIME</jpa:temporal>
+                <jpa:column name="to_hour" unique="false" nullable="false" insertable="true" updatable="true" table="working_hours"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401571185">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="working_hours"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401571186">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="working_hours"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559141" connected-attribute-id="_1525255401571204" v="true" name="serviceProvidersCollection" id="_1525255401571187"/>
+            <jpa:id attribute-type="Integer" v="true" name="workingHourId" id="_1525255401571181">
+                <jpa:column name="working_hour_id" unique="false" nullable="false" insertable="true" updatable="true" table="working_hours"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="working_hours"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CustomerPK" abs="false" class="Customer" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559140">
+        <jpa:attributes>
+            <jpa:basic optional="true" attribute-type="String" v="true" name="phone" id="_1525255401571189">
+                <jpa:column name="phone" unique="false" nullable="true" insertable="true" updatable="true" table="customers" length="20"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401571190">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="customers"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401571191">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="customers"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559135" connected-attribute-id="_1525255401563157" v="true" name="loleOrdersCollection" id="_1525255401571192"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559143" connected-attribute-id="_1525255401571220" v="true" name="productRatingAndCommentCollection" id="_1525255401571193"/>
+            <jpa:id attribute-type="Integer" v="true" name="customerId" id="_1525255401571188">
+                <jpa:column name="customer_id" unique="false" nullable="false" insertable="true" updatable="true" table="customers"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="customers"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ServiceProviderPK" abs="false" class="ServiceProvider" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559141">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="companyName" id="_1525255401571195">
+                <jpa:column name="company_name" unique="false" nullable="false" insertable="true" updatable="true" table="service_providers" length="40"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="String" v="true" name="phone" id="_1525255401571196">
+                <jpa:column name="phone" unique="false" nullable="true" insertable="true" updatable="true" table="service_providers" length="20"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="subCity" id="_1525255401571197">
+                <jpa:column name="sub_city" unique="false" nullable="false" insertable="true" updatable="true" table="service_providers" length="45"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="woreda" id="_1525255401571198">
+                <jpa:column name="woreda" unique="false" nullable="false" insertable="true" updatable="true" table="service_providers" length="45"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="double" v="true" name="lat" id="_1525255401571199">
+                <jpa:column name="lat" unique="false" nullable="false" insertable="true" updatable="true" table="service_providers"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="double" v="true" name="lng" id="_1525255401571200">
+                <jpa:column name="lng" unique="false" nullable="false" insertable="true" updatable="true" table="service_providers"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401571201">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="service_providers"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401571202">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="service_providers"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="companyPhotoUrl" id="_1525255401571203">
+                <jpa:column name="company_photo_url" unique="false" nullable="false" insertable="true" updatable="true" table="service_providers" length="145"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559139" connected-attribute-id="_1525255401571187" v="true" name="workingHourId" id="_1525255401571204">
+                <jpa:join-column name="WORKING_HOUR_ID" rc="WORKING_HOUR_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559142" connected-attribute-id="_1525255401571213" v="true" name="laundriesCollection" id="_1525255401571205"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559144" connected-attribute-id="_1525255401571231" v="true" name="productsCollection" id="_1525255401571206"/>
+            <jpa:id attribute-type="Integer" v="true" name="serviceProviderId" id="_1525255401571194">
+                <jpa:column name="service_provider_id" unique="false" nullable="false" insertable="true" updatable="true" table="service_providers"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="service_providers">
+            <jpa:unique-constraint>
+                <jpa:column-name>company_name</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="LaundryPK" abs="false" class="Laundry" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559142">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="java.math.BigDecimal" v="true" name="unitPrice" id="_1525255401571208">
+                <jpa:column name="unit_price" unique="false" nullable="false" insertable="true" updatable="true" table="laundries" precision="12" scale="2"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="closeType" id="_1525255401571209">
+                <jpa:column name="close_type" unique="false" nullable="false" insertable="true" updatable="true" table="laundries" length="45"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401571210">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="laundries"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401571211">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="laundries"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559141" connected-attribute-id="_1525255401571205" v="true" name="serviceProviderId" id="_1525255401571213">
+                <jpa:join-column name="SERVICE_PROVIDER_ID" rc="SERVICE_PROVIDER_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559136" connected-attribute-id="_1525255401567167" v="true" name="orderLaundryCollection" id="_1525255401571212"/>
+            <jpa:id attribute-type="Integer" v="true" name="laundryId" id="_1525255401571207">
+                <jpa:column name="laundry_id" unique="false" nullable="false" insertable="true" updatable="true" table="laundries"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="laundries"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductRatingAndCommentPK" abs="false" class="ProductRatingAndComment" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559143">
+        <jpa:attributes>
+            <jpa:basic optional="true" attribute-type="Integer" v="true" name="rating" id="_1525255401571215">
+                <jpa:column name="rating" unique="false" nullable="true" insertable="true" updatable="true" table="product_rating_and_comment"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="String" v="true" name="comment" id="_1525255401571216">
+                <jpa:column name="comment" unique="false" nullable="true" insertable="true" updatable="true" table="product_rating_and_comment" length="100"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401571217">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="false" insertable="true" updatable="true" table="product_rating_and_comment"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401571218">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="false" insertable="true" updatable="true" table="product_rating_and_comment"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559144" connected-attribute-id="_1525255401571229" v="true" name="productId" id="_1525255401571219">
+                <jpa:join-column name="PRODUCT_ID" rc="PRODUCT_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559140" connected-attribute-id="_1525255401571193" v="true" name="customerId" id="_1525255401571220">
+                <jpa:join-column name="CUSTOMER_ID" rc="CUSTOMER_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="ratingCommentId" id="_1525255401571214">
+                <jpa:column name="rating_comment_id" unique="false" nullable="false" insertable="true" updatable="true" table="product_rating_and_comment"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="product_rating_and_comment"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductPK" abs="false" class="Product" v="true" xre="false" m="false" rootElement="_1525255401559134" id="_1525255401559144">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="productName" id="_1525255401571222">
+                <jpa:column name="product_name" unique="false" nullable="false" insertable="true" updatable="true" table="products" length="50"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.math.BigDecimal" v="true" name="unitPrice" id="_1525255401571223">
+                <jpa:column name="unit_price" unique="false" nullable="true" insertable="true" updatable="true" table="products" precision="12" scale="2"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="ingredient" id="_1525255401571224">
+                <jpa:column name="ingredient" unique="false" nullable="false" insertable="true" updatable="true" table="products" length="145"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="productPhotoUrl" id="_1525255401571225">
+                <jpa:column name="product_photo_url" unique="false" nullable="false" insertable="true" updatable="true" table="products" length="145"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="createdAt" id="_1525255401571226">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="created_at" unique="false" nullable="true" insertable="true" updatable="true" table="products"/>
+            </jpa:basic>
+            <jpa:basic optional="true" attribute-type="java.util.Date" v="true" name="updatedAt" id="_1525255401571227">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+                <jpa:column name="updated_at" unique="false" nullable="true" insertable="true" updatable="true" table="products"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559137" connected-attribute-id="_1525255401571172" v="true" name="productTypeId" id="_1525255401571230">
+                <jpa:join-column name="PRODUCT_TYPE_ID" rc="PRODUCT_TYPE_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" primaryKey="false" connected-entity-id="_1525255401559141" connected-attribute-id="_1525255401571206" v="true" name="serviceProviderId" id="_1525255401571231">
+                <jpa:join-column name="SERVICE_PROVIDER_ID" rc="SERVICE_PROVIDER_ID" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559138" connected-attribute-id="_1525255401571180" v="true" name="orderItemCollection" id="_1525255401571228"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1525255401559143" connected-attribute-id="_1525255401571219" v="true" name="productRatingAndCommentCollection" id="_1525255401571229"/>
+            <jpa:id attribute-type="Integer" v="true" name="productId" id="_1525255401571221">
+                <jpa:column name="product_id" unique="false" nullable="false" insertable="true" updatable="true" table="products"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="products">
+            <jpa:unique-constraint>
+                <jpa:column-name>product_name</jpa:column-name>
+                <jpa:column-name>service_provider_id</jpa:column-name>
+            </jpa:unique-constraint>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_1525255401671232">
+            <i ref="_1525255401559138" x="504" y="306"/>
+            <i ref="_1525255401559137" x="1135" y="1148"/>
+            <i ref="_1525255401559139" x="1385" y="706"/>
+            <i ref="_1525255401559141" x="1135" y="306"/>
+            <i ref="_1525255401559140" x="814" y="1443"/>
+            <i ref="_1525255401559143" x="504" y="1148"/>
+            <i ref="_1525255401559142" x="814" y="32"/>
+            <i ref="_1525255401559144" x="814" y="706"/>
+            <i ref="_1525255401559136" x="32" y="1148"/>
+            <i ref="_1525255401559135" x="263" y="706"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
